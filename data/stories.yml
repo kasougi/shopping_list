@@ -1,0 +1,32 @@
+version: "3.1"
+
+stories:
+
+- story: привет
+  steps:
+  - intent: hello
+  - action: utter_hello
+  - intent: my_name
+  - slot_was_set:
+    - person
+  - action: utter_pleased_to_meet_you
+
+- story: привет как тебя зовут
+  steps:
+  - intent: hello+my_name
+  - slot_was_set:
+    - person
+  - action: utter_pleased_to_meet_you
+
+- story: добавление товара
+  steps:
+  - intent: item_added
+  - slot_was_set:
+    - item
+  - action: action_item_added
+
+- story: добавление товара
+  steps:
+  - intent: show_items
+  - action: utter_show_items
+

@@ -1,0 +1,50 @@
+version: "3.1"
+
+intents:
+  - hello
+  - my_name
+  - goodbye
+  - hello+my_name
+  - show_items
+
+entities:
+  - person
+  - item
+  - items_list
+
+slots:
+  person:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: person
+  item:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: item
+  items_list:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: items_list
+
+actions:
+  - action_item_added
+
+
+responses:
+  utter_hello:
+  - text: "Добрый день! Как вас зовут?"
+  utter_pleased_to_meet_you:
+  - text: 'Привет, {person}!'
+  utter_item_added:
+  - text: '{item}, добавлен в список покупок'
+  utter_show_items:
+  - text: '{items_list}'
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

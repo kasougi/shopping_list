@@ -5,7 +5,6 @@ intents:
   - my_name
   - goodbye
   - hello+my_name
-  - show_items
 
 entities:
   - person
@@ -32,7 +31,7 @@ slots:
 
 actions:
   - action_item_added
-
+  - actions_show_items
 
 responses:
   utter_hello:
@@ -41,9 +40,6 @@ responses:
   - text: 'Привет, {person}!'
   utter_item_added:
   - text: '{item}, добавлен в список покупок'
-  utter_show_items:
-  - text: '{items_list}'
-
 
 session_config:
   session_expiration_time: 60

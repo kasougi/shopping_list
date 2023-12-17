@@ -7,6 +7,8 @@ authors = [
 ]
 dependencies = [
     "rasa>=3.6.1",
+    "nltk>=3.8.1",
+    "pymystem3>=0.2.0",
 ]
 requires-python = "==3.8.*"
 readme = "README.md"

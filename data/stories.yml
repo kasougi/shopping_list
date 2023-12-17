@@ -28,5 +28,5 @@ stories:
 - story: добавление товара
   steps:
   - intent: show_items
-  - action: utter_show_items
+  - action: action_show_items
 

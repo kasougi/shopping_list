@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:bd0b9bd4c13e7265a8bdffc66de423ada15a0fd305830d5745dd4d43b327e80e"
+content_hash = "sha256:5c6b9b9e4b537cf8b0a927dc67dbda0281a938ee331145260ac338e3eaf8e956"
 
 [[package]]
 name = "absl-py"
@@ -354,7 +354,6 @@ version = "8.1.7"
 requires_python = ">=3.7"
 summary = "Composable command line interface toolkit"
 groups = ["default"]
-marker = "python_version >= \"3.8\" and python_version < \"3.11\""
 dependencies = [
     "colorama; platform_system == \"Windows\"",
 ]
@@ -1134,6 +1133,23 @@ files = [
 ]
 
 [[package]]
+name = "nltk"
+version = "3.8.1"
+requires_python = ">=3.7"
+summary = "Natural Language Toolkit"
+groups = ["default"]
+dependencies = [
+    "click",
+    "joblib",
+    "regex>=2021.8.3",
+    "tqdm",
+]
+files = [
+    {file = "nltk-3.8.1-py3-none-any.whl", hash = "sha256:fd5c9109f976fa86bcadba8f91e47f5e9293bd034474752e92a520f81c93dda5"},
+    {file = "nltk-3.8.1.zip", hash = "sha256:1834da3d0682cba4f2cede2f9aad6b0fafb6461ba451db0efb6f9c39798d64d3"},
+]
+
+[[package]]
 name = "numpy"
 version = "1.23.5"
 requires_python = ">=3.8"
@@ -1506,6 +1522,19 @@ files = [
     {file = "pymongo-4.3.3-cp38-cp38-win32.whl", hash = "sha256:a6cd6f1db75eb07332bd3710f58f5fce4967eadbf751bad653842750a61bda62"},
     {file = "pymongo-4.3.3-cp38-cp38-win_amd64.whl", hash = "sha256:d5571b6978750601f783cea07fb6b666837010ca57e5cefa389c1d456f6222e2"},
     {file = "pymongo-4.3.3.tar.gz", hash = "sha256:34e95ffb0a68bffbc3b437f2d1f25fc916fef3df5cdeed0992da5f42fae9b807"},
+]
+
+[[package]]
+name = "pymystem3"
+version = "0.2.0"
+summary = "Python wrapper for the Yandex MyStem 3.1 morpholocial analyzer of the Russian language."
+groups = ["default"]
+dependencies = [
+    "requests",
+]
+files = [
+    {file = "pymystem3-0.2.0-py3-none-any.whl", hash = "sha256:0bfdb0c2c57157f413c85f3e5f54a41f294880c3d6e8028066e71598ee6b52aa"},
+    {file = "pymystem3-0.2.0.tar.gz", hash = "sha256:1aaed6a15451cc73f5750bcda77559e681215e1e391b35dd4325bd132a3afb95"},
 ]
 
 [[package]]

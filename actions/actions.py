@@ -7,6 +7,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+from pymystem3 import Mystem
 
 class ActionItemAdded(Action):
 
@@ -18,17 +19,27 @@ class ActionItemAdded(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         i_list = tracker.get_slot("items_list")
         new_item = tracker.get_slot("item")
-
-        print(i_list)
-        print(type(i_list))
-        print(new_item)
-        print()
+        m = Mystem()
+        new_item = m.lemmatize(new_item)[0]
         if not i_list:
             i_list = [new_item]
-            print(11111)
         else:
             i_list.append(new_item)
-        print(i_list)
         dispatcher.utter_message(response="utter_item_added")
 
         return [SlotSet("items_list", i_list)]
+
+
+class ActionShowItems(Action):
+
+    def name(self) -> Text:
+        return "action_show_items"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        i_list = tracker.get_slot("items_list")
+        resp = "Ваша корзина:" + " ".join(i_list)
+        dispatcher.utter_message(text=resp)
+
+        return []

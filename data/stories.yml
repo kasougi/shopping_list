@@ -25,7 +25,14 @@ stories:
     - item
   - action: action_item_added
 
-- story: добавление товара
+- story: удаление товара
+  steps:
+  - intent: item_deleted
+  - slot_was_set:
+    - item
+  - action: action_item_deleted
+
+- story: показ товара
   steps:
   - intent: show_items
   - action: action_show_items

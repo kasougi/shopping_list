@@ -29,6 +29,31 @@ class ActionItemAdded(Action):
 
         return [SlotSet("items_list", i_list)]
 
+class ActionItemDeleted(Action):
+
+    def name(self) -> Text:
+        return "action_item_deleted"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        i_list = tracker.get_slot("items_list")
+        del_item = tracker.get_slot("item")
+
+        m = Mystem()
+        new_item = m.lemmatize(del_item)[0]
+
+        if not i_list:
+            i_list = []
+        else:
+            i_list = [i for i in i_list if i != new_item]
+
+
+        dispatcher.utter_message(response="utter_item_deleted")
+
+        return [SlotSet("items_list", i_list)]
+
 
 class ActionShowItems(Action):
 
@@ -39,7 +64,10 @@ class ActionShowItems(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         i_list = tracker.get_slot("items_list")
-        resp = "Ваша корзина:" + " ".join(i_list)
+        if not i_list:
+            resp = "Ваша корзина пуста"
+        else:
+            resp = "Ваша корзина: " + " ".join(i_list)
         dispatcher.utter_message(text=resp)
 
         return []
